@@ -8,8 +8,8 @@ int main( int argc, char *argv[] )
 {
     if( argc != 4 )
     {
-        std::cout << "usage:" << std::endl
-            << argv[0] << " inputfilename outputfilename arrayname" << std::endl;
+        std::cout << "usage:\n"
+            << argv[0] << " inputfilename outputfilename arrayname\n";
         return 1;
     }
     std::ifstream in_file;
