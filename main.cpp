@@ -24,15 +24,14 @@ int main( int argc, char *argv[] )
     out_file.open( argv[2] );
     if( !out_file.is_open() )
         return 1;
-    out_file << "char const " << argv[3] << "[" << content.size() << "] = " << std::endl << "{";
+    out_file << "char const " << argv[3] << "[" << content.size() << "] =\n{";
     for( int i=0; i<content.size(); ++i )
     {
         if( i )
-            out_file << ", ";
-        if( !(i%16) )
-            out_file << std::endl << "    ";
+            out_file << ",";
+        out_file << ( ( i%16 ) ? " " : "\n\t" );
         out_file << "0x" << std::hex << std::setw( 2 ) << std::setfill( '0' )<< static_cast<int>( content[i] );
     }
-    out_file << std::endl << "};" << std::endl;
+    out_file << "\n};\n";
     return 0;
 }
