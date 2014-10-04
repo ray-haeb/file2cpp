@@ -3,7 +3,6 @@
 #include <fstream>
 #include <vector>
 #include <iomanip>
-#include <string>
 
 int main( int argc, char *argv[] ) {
     if (argc != 4) {
@@ -11,7 +10,7 @@ int main( int argc, char *argv[] ) {
                 << argv[0] << " inputfilename outputfilename arrayname\n";
         return 1;
     }
-    std::vector<unsigned char> content;
+    std::vector<char> content;
     {
         std::ifstream in_file;
         in_file.open(argv[1]);
@@ -49,7 +48,7 @@ int main( int argc, char *argv[] ) {
         if( i )
             out_file_cpp << ",";
         out_file_cpp << ( ( i%16 ) ? " " : "\n\t" );
-        out_file_cpp << std::setw( 3 ) << std::setfill( ' ' ) << static_cast<unsigned int>( content[i] );
+        out_file_cpp << std::setw( 4 ) << std::setfill( ' ' ) << static_cast<int>( content[i] );
     }
     out_file_cpp << "\n};\n";
     return 0;
