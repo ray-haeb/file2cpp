@@ -43,8 +43,8 @@ int main( int argc, char *argv[] ) {
     }
     out_file_hpp << "#include <array>\n\n";
     out_file_cpp << "#include <array>\n\n";
-    out_file_hpp << "extern std::array<char const," << content.size() << "> " << argv[3] << " const;\n";
-    out_file_cpp << "std::array<char const," << content.size() << "> " << argv[3] << " const =\n{";
+    out_file_hpp << "extern std::array<char const," << content.size() << "> const " << argv[3] << ";\n";
+    out_file_cpp << "std::array<char const," << content.size() << "> const " << argv[3] << " =\n{";
     for( int i=0; i<content.size(); ++i )
     {
         if( i )
