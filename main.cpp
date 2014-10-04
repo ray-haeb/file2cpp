@@ -41,8 +41,10 @@ int main( int argc, char *argv[] ) {
         std::cerr << "cannot open output file: \"" << out_file_name_hpp << "\"\n";
         return 1;
     }
-    out_file_hpp << "extern char " << argv[3] << "[" << content.size() << "];\n";
-    out_file_cpp << "char " << argv[3] << "[" << content.size() << "] =\n{";
+    out_file_hpp << "#include <array>\n\n";
+    out_file_cpp << "#include <array>\n\n";
+    out_file_hpp << "extern std::array<char const," << content.size() << "> " << argv[3] << ";\n";
+    out_file_cpp << "std::array<char const," << content.size() << "> " << argv[3] << " =\n{";
     for( int i=0; i<content.size(); ++i )
     {
         if( i )
